@@ -3,6 +3,7 @@ pipeline {
 
     stages {
         stage('Build') {
+            //This is a comment for jenkinsfile
             agent {
                 docker {
                     image 'node:18-alpine'
@@ -21,7 +22,28 @@ pipeline {
             }
         }
 
+        stage('E2E') {
+            
+            agent{
+                docker{
+                    image 'nmcr.microsoft.com/playwright:v1.57.0-noble'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    npm -install -g serve
+                    serve -s build
+                    npx playright test
+                '''
+            }
+        }
+
         stage('Test') {
+            /*
+            This is Line1
+            This is Line2
+            */
             agent{
                 docker{
                     image 'node:18-alpine'
