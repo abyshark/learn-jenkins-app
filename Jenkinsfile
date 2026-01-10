@@ -21,7 +21,7 @@ pipeline {
                 '''
             }
         }
-/*
+
         stage('E2E') {
             
             agent{
@@ -34,12 +34,12 @@ pipeline {
                 sh '''
                     npm -install serve
                     node_modules/.bin/serve -s build &
-                    sleep 20
-                    npx playright test
+                    sleep 10
+                    npx playwright test
                 '''
             }
         }
-*/
+
         stage('Test') {
             /*
             This is Line1
