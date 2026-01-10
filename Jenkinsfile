@@ -33,7 +33,8 @@ pipeline {
             steps {
                 sh '''
                     npm -install serve
-                    node_modules/serve -s build
+                    node_modules/serve -s build &
+                    sleep 8
                     npx playright test
                 '''
             }
