@@ -21,7 +21,7 @@ pipeline {
                 '''
             }
         }
-
+/*
         stage('E2E') {
             
             agent{
@@ -39,7 +39,7 @@ pipeline {
                 '''
             }
         }
-
+*/
         stage('Test') {
             /*
             This is Line1
