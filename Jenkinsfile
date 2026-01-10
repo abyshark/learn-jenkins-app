@@ -17,15 +17,6 @@ pipeline {
                     npm --version
                     npm ci
                     npm run build
-
-                    # Ensure git is available (node:18-alpine may not have git)
-        if ! command -v git >/dev/null 2>&1; then
-            apk add --no-cache git
-        fi
-
-        # Print commit info
-        echo "Commit count: $(git rev-list --count HEAD 2>/dev/null || echo 'N/A')"
-        
                     ls -la
                 '''
             }
@@ -42,7 +33,7 @@ pipeline {
             steps {
                 sh '''
                     npm -install serve
-                    node_modules/serve -s build &
+                    node_modules/.bin/serve -s build &
                     sleep 8
                     npx playright test
                 '''
