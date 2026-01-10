@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     stages {
+        
         stage('Build') {
             //This is a comment for jenkinsfile
             agent {
@@ -21,7 +22,7 @@ pipeline {
                 '''
             }
         }
-
+parallel {
         stage('E2E') {
             
             agent{
@@ -57,6 +58,7 @@ pipeline {
                 '''
             }
         }
+    }
     }
 
     post{
