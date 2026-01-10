@@ -34,7 +34,7 @@ pipeline {
                 sh '''
                     npm -install serve
                     node_modules/.bin/serve -s build &
-                    sleep 8
+                    sleep 20
                     npx playright test
                 '''
             }
