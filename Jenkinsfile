@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        /*
+        
 
         stage('Build') {
             agent {
@@ -22,20 +22,17 @@ pipeline {
                 '''
             }
         }
-        */
-
-        
-            
-                stage('Unit tests') {
-                    agent {
-                        docker {
+           
+        stage('Unit tests') {
+            agent {
+                 docker {
                             image 'node:18-alpine'
                             reuseNode true
                         }
                     }
 
-                    steps {
-                        sh '''
+             steps {
+                   sh '''
                             #test -f build/index.html
                             npm test
                         '''
@@ -46,7 +43,7 @@ pipeline {
                         }
                     }
                 }
-
+/*
                 stage('E2E') {
                     agent {
                         docker {
@@ -72,7 +69,7 @@ pipeline {
                     }
                     
                 }
-            
+            */
         
     }
 }
