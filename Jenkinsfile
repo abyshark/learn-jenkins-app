@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        
+        /*
 
         stage('Build') {
             agent {
@@ -22,10 +22,10 @@ pipeline {
                 '''
             }
         }
-        
+        */
 
-        stage('Tests') {
-            parallel {
+        
+            
                 stage('Unit tests') {
                     agent {
                         docker {
@@ -64,15 +64,15 @@ pipeline {
                         '''
                     }
 
-/*
+
                     post {
                         always {
-                        publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, icon: '', keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                            publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'playwright-report', reportFiles: 'index.html', reportName: 'Playwright HTML Report', reportTitles: '', useWrapperFileDirectly: true])
                         }
                     }
-*/
+                    
                 }
-            }
-        }
+            
+        
     }
 }
