@@ -95,6 +95,14 @@ pipeline {
                 '''
             }        
     }
+      stage('Approve') {
+            timeout(time: 15, unit: 'SECONDS') {
+                sh '''
+                    input message: 'yes', ok: 'No'
+                '''
+            }
+             
+    }
         stage('Deploy Prod') {
             agent
             {
