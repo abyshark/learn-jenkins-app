@@ -97,10 +97,8 @@ pipeline {
     }
       stage('Approve') {
            steps{
-            timeout(time: 15, unit: 'MINUTES') {
-                sh '''
-                    input message: 'yes', ok: 'No'
-                '''
+            timeout(time: 15, unit: 'SECONDS') {                
+                input message: 'yes', ok: 'No'               
             }
            } 
              
